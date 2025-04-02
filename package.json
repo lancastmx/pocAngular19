@@ -1,5 +1,4 @@
-{
-  "name": "poc-angular19",
+{ "name": "poc-angular19",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",

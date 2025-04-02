@@ -1,0 +1,19 @@
+<h1>{{title}} </h1>
+<p>Si falta documentación da click <a href="https://gist.github.com/nicobytes/ba2252b0b5ac2cbdafc40c0accd24862" target="_blank" rel="noopener noreferrer">aquí</a></p>
+<ul>
+  </ul>
+<ul>
+  @for (item of items; track item) {
+    <li>{{ item }}</li>
+    } @empty {
+    <li>There are no items.</li>
+    }
+</ul>
+<ul>
+  @for (fruta of frutas; track fruta){
+    <div>{{fruta}}</div>} @empty {
+      <h3> nimares</h3>
+    }
+</ul>
+<hr>
+<app-todo></app-todo>
