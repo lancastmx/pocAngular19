@@ -11,6 +11,9 @@ import { TodoComponent } from '../todo/todo.component';
 })
 export class LabComponent {
   title = 'Laboratiorio';
+  name = 'Angel';
+  age = 32;
+  disabled = true;
   items = [
   ]
   frutas = [
@@ -18,4 +21,10 @@ export class LabComponent {
     'pera',
     'melon'
   ]
+  img = 'https://picsum.photos/200/300'
+  person = {
+    name: 'Angel',
+    age: 32,
+    avatar:'https://picsum.photos/200/300'
+  }
 }

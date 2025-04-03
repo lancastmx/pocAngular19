@@ -1,0 +1,29 @@
+.card {
+  background-color: rgb(24, 13, 13);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem;
+ border-radius: 1rem;
+ border-color: red;
+ border-style: double;
+}
+.card__section{
+  background-color: rgb(96, 75, 75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem;
+ border-radius: 1rem;
+ border-color: rgb(255, 196, 0);
+ border-style: double;
+}
+.card__img {
+ margin: 2rem;
+ border-radius: 1rem;
+ border-color: rgb(251, 255, 0);
+ border-style: double;
+}
+.card__text {
+  color: rgb(255, 255, 255);
+}

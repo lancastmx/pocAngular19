@@ -15,5 +15,24 @@
       <h3> nimares</h3>
     }
 </ul>
+<input type="text" [value]="name" >
+<img [src]="img" alt="">
+<button [disabled]="true">click me</button>
+<div>
+  <div class="card">
+    <div class="card__section">
+      <div class="col-4 m-4">
+        <img
+        [src]="person.avatar"
+        [alt]="person.name"
+        class="card__img">
+      </div>
+      <div class="col-4">
+        <h1 class="card__text">{{person.name}} </h1>
+        <p class="card__text" >{{person.age}} </p>
+      </div>
+    </div>
+  </div>
+</div>
 <hr>
 <app-todo></app-todo>
