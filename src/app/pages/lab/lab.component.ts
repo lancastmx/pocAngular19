@@ -28,6 +28,9 @@ export class LabComponent {
     avatar:'https://picsum.photos/200/300'
   }
   text1 = 'More Event Binding Examples';
+  clickHandler() {
+    console.log('clickHandler(): El (click)="clickHandler()" es un evento click que desata una funcion.');
+  }
 
   onMouseOverDiv() {
     console.log('(mouseover): El cursor del ratón entró en el elemento div.');
