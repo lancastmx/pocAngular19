@@ -1,4 +1,5 @@
-<h1>{{title}} </h1>
+<div class="conteiner">
+  <h1>{{title}} </h1>
 <p>Si falta documentación da click <a href="https://gist.github.com/nicobytes/ba2252b0b5ac2cbdafc40c0accd24862" target="_blank" rel="noopener noreferrer">aquí</a></p>
 <ul>
   </ul>
@@ -15,11 +16,17 @@
       <h3> nimares</h3>
     }
 </ul>
-<input type="text" [value]="name" >
-<img [src]="img" alt="">
-<button [disabled]="true">click me</button>
-<div>
-  <div class="card">
+<div class="row">
+  <div class="col-4">
+    <img [src]="img" alt="">
+  <div>
+  <div class="col-4">
+    <input  type="text" [value]="name">
+  </div>
+  <div class="col-4">
+    <button class="btn btn-primary" [disabled]="true">click me</button>
+  </div>
+  <div class="card d-flex">
     <div class="card__section">
       <div class="col-4 m-4">
         <img
@@ -34,5 +41,48 @@
     </div>
   </div>
 </div>
+  </div>
+</div>
+<button type="button" class="btn btn-primary">Primary</button>
+<button type="button" class="btn btn-secondary">Secondary</button>
+<button type="button" class="btn btn-success">Success</button>
+<button type="button" class="btn btn-danger">Danger</button>
+<button type="button" class="btn btn-warning">Warning</button>
+<button type="button" class="btn btn-info">Info</button>
+<button type="button" class="btn btn-light">Light</button>
+<button type="button" class="btn btn-dark">Dark</button>
+
+<button type="button" class="btn btn-link">Link</button>
 <hr>
+<h1>{{text1}}</h1>
+<p>Si falta documentación da click <a href="https://gist.github.com/nicobytes/ba2252b0b5ac2cbdafc40c0accd24862" target="_blank" rel="noopener noreferrer">aquí</a></p>
+
+<div (mouseover)="onMouseOverDiv()" (mouseout)="onMouseOutDiv()">
+  Pasa el ratón por encima
+</div>
+<button (mousedown)="onMouseDownButton()" (mouseup)="onMouseUpButton()">Presiona y suelta</button>
+<input type="text" (focus)="onInputFocus()" (blur)="onInputBlur()">
+<select (change)="onSelectChange($event)">
+  <option value="opcion1">Opción 1</option>
+  <option value="opcion2">Opción 2</option>
+</select>
+<form (submit)="onSubmitForm($event)">
+  <input type="text">
+  <button type="submit">Enviar</button>
+</form>
+<div (scroll)="onScrollDiv($event)" style="height: 100px; overflow: auto; border: 1px solid #ccc;">
+  Este es un div con contenido desplazable.<br>
+  Este es un div con contenido desplazable.<br>
+  Este es un div con contenido desplazable.<br>
+  Este es un div con contenido desplazable.<br>
+  Este es un div con contenido desplazable.<br>
+</div>
+<input type="text" (copy)="onCopy($event)" (cut)="onCut($event)" (paste)="onPaste($event)">
+<div (dragstart)="onDragStart($event)" draggable="true" style="border: 1px solid blue; padding: 10px; margin-bottom: 10px;">
+  Arrastrable
+</div>
+<div (dragover)="onDragOver($event)" (drop)="onDrop($event)" style="border: 1px solid green; padding: 20px;">
+  Zona de Soltar
+</div>
+</div>
 <app-todo></app-todo>

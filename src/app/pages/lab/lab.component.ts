@@ -27,4 +27,72 @@ export class LabComponent {
     age: 32,
     avatar:'https://picsum.photos/200/300'
   }
+  text1 = 'More Event Binding Examples';
+
+  onMouseOverDiv() {
+    console.log('(mouseover): El cursor del ratón entró en el elemento div.');
+  }
+
+  onMouseOutDiv() {
+    console.log('(mouseout): El cursor del ratón salió del elemento div.');
+  }
+
+  onMouseDownButton() {
+    console.log('(mousedown): Se presionó un botón del ratón sobre el elemento button.');
+  }
+
+  onMouseUpButton() {
+    console.log('(mouseup): Se soltó un botón del ratón sobre el elemento button.');
+  }
+
+  onInputFocus() {
+    console.log('(focus): El elemento input ha recibido el foco.');
+  }
+
+  onInputBlur() {
+    console.log('(blur): El elemento input ha perdido el foco.');
+  }
+
+  onSelectChange(event: Event) {
+    const target = event.target as HTMLSelectElement;
+    console.log('(change): El valor del elemento select ha cambiado.', target.value);
+  }
+
+  onSubmitForm(event: Event) {
+    event.preventDefault(); // Evita la recarga de la página
+    console.log('(submit): Se intentó enviar el formulario.');
+  }
+
+  onScrollDiv(event: Event) {
+    const target = event.target as HTMLDivElement;
+    console.log('(scroll): Se ha desplazado el contenido del div.', `Posición Y: ${target.scrollTop}`);
+  }
+
+  onCopy(event: ClipboardEvent) {
+    console.log('(copy): Se intentó copiar texto del elemento.');
+  }
+
+  onCut(event: ClipboardEvent) {
+    console.log('(cut): Se intentó cortar texto del elemento.');
+  }
+
+  onPaste(event: ClipboardEvent) {
+    console.log('(paste): Se intentó pegar texto en el elemento.');
+  }
+
+  onDragStart(event: DragEvent) {
+    console.log('(dragstart): Se inició la operación de arrastre en el elemento.');
+    // Puedes configurar dataTransfer aquí
+  }
+
+  onDragOver(event: DragEvent) {
+    event.preventDefault(); // Permite soltar en este objetivo
+    console.log('(dragover): El elemento arrastrado está sobre la zona de soltar.');
+  }
+
+  onDrop(event: DragEvent) {
+    event.preventDefault(); // Evita el comportamiento por defecto de soltar
+    console.log('(drop): Se soltó un elemento en la zona de soltar.');
+    // Puedes procesar los datos transferidos aquí
+  }
 }
