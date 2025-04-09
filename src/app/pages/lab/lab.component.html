@@ -24,39 +24,85 @@
     </ul>
   </div>
   <div class="col-4">
-    <h6>Datos del componente</h6>
-    <div class="card d-flex">
-      <div class="card__section">
-        <div class="col-4 m-4">
-          <img
-          [src]="person.avatar"
-          [alt]="person.name"
-          class="card__img">
-        </div>
-        <div class="col-4">
-          <h1 class="card__text">{{person.name}} </h1>
-          <p class="card__text" >{{person.age}} </p>
-        </div>
-      </div>
+    <div>
+      <h3>Aqui se imprimen varibles </h3>
+    </div>
+    <div class="col-4 m-4">
+      <img
+      [src]="person.avatar"
+      [alt]="person.name"
+      class="card__img">
+    </div>
+    <div class="col-4">
+      <h1 class="card__text">{{person.name}} </h1>
+      <p class="card__text" >{{person.age}} </p>
+    </div>
+  </div>
+  <div class="col-4">
+    <h3>Input y botones</h3>
+    <div>
+      <input  type="text" [value]="name" (change)="changeHandler($event)">
+    </div>
+    <div>
+      <input  type="number" [value]="person.age" (change)="changeHandler($event)">
+    </div>
+    <div>
+      <button class="btn btn-primary" (click)="clickHandler($event)">click me</button>
+    </div>
+    <div>
+      <button class="btn btn-primary" (dblclick)="clickHandler($event)">doble click me</button>
+    </div>
+    <div>
+      <p>(Keydown) </p>
+       <input type="text" [value]="person.name" (keydown)="keydonwHandler($event)">
     </div>
   </div>
 </div>
-
-
 <div class="row">
   <div class="col-4">
-    <img [src]="img" alt="">
-  <div>
-  <div class="col-4">
-    <input  type="text" [value]="name">
+    <h5>Modelo signals</h5>
+    <p>Este es el texto de prueba: <span>{{textsignal()}}</span>  </p>
+    
+    <!-- Agrega esto en tu template -->
+<div >
+  <div >
+    <p >
+      <strong>Diferencias entre eventos:</strong><br>
+      - (input): Actualiza con cada tecla (tiempo real)<br>
+      - (keydown): Actualiza al presionar tecla pero con valor anterior<br>
+      - (change): Actualiza solo al perder foco o presionar Enter
+    </p>
+    
+    <!-- Input con evento input -->
+    <div>
+      <label>(input) - Tiempo real</label>
+      <input type="text" 
+             [value]="textsignal()" 
+             (input)="updateSignal($event)">
+      <p>Valor actual: {{ textsignal() }}</p>
+    </div>
+
+    <!-- Input con evento keydown -->
+    <div >
+      <label>(keydown) - Valor anterior</label>
+      <input type="text" 
+             [value]="textsignal()" 
+             (keydown)="updateSignal($event)">
+      <p>Valor actual: {{ textsignal() }}</p>
+    </div>
+    <div>
+      <label>(keydown) - Valor anterior</label>
+      <input  type="text" 
+              [value]="textsignal()" 
+              (change)="changeHandler($event)">
+    </div>
   </div>
-  <div class="col-4">
-    <button class="btn btn-primary" (click)="clickHandler()">click me</button>
-  </div>
-  
 </div>
   </div>
 </div>
+
+
+
 <button type="button" class="btn btn-primary">Primary</button>
 <button type="button" class="btn btn-secondary">Secondary</button>
 <button type="button" class="btn btn-success">Success</button>

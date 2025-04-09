@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { TodoComponent } from '../todo/todo.component';
 @Component({
   selector: 'app-lab',
@@ -28,10 +28,37 @@ export class LabComponent {
     avatar:'https://picsum.photos/200/300'
   }
   text1 = 'More Event Binding Examples';
-  clickHandler() {
-    console.log('clickHandler(): El (click)="clickHandler()" es un evento click que desata una funcion.');
-  }
+  textsignal= signal('texto señal')
 
+  keydonwHandler(event: KeyboardEvent){
+    const input = event.target as HTMLInputElement;
+    const newValue = input.value;
+    console.log(input.value)
+    this.textsignal.set(newValue)
+
+  }
+  changeHandler(event: Event){
+    const input = event.target as HTMLInputElement;
+    const newValue = input.value;
+    console.log(input.value)
+    this.textsignal.set(newValue)
+  }
+  clickHandler(evenet: Event) {
+    console.log(evenet)
+    console.log('Se eejecuto (click)="clickHandler()"');
+  }
+  updateSignal(event: Event) {
+  const input = event.target as HTMLInputElement;
+  if (event.type === 'keydown') {
+    setTimeout(() => {
+      this.textsignal.set(input.value);
+    }, 0);
+  } else {
+    this.textsignal.set(input.value);
+  }
+  
+  console.log('Evento:', event.type, 'Valor:', input.value);
+}
   onMouseOverDiv() {
     console.log('(mouseover): El cursor del ratón entró en el elemento div.');
   }
