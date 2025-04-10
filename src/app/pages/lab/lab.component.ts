@@ -11,7 +11,7 @@ import { TodoComponent } from '../todo/todo.component';
 })
 export class LabComponent {
   title = 'Laboratiorio';
-  name = 'Angel';
+  name = signal<string>('Angel');
   age = 32;
   disabled = true;
   items = [
@@ -29,6 +29,14 @@ export class LabComponent {
   }
   text1 = 'More Event Binding Examples';
   textsignal= signal('texto señal')
+
+  signallist = signal([
+    'señal0',
+    'señal1',
+    'señal2',
+    'señal3',
+    'señal4'
+  ])
 
   keydonwHandler(event: KeyboardEvent){
     const input = event.target as HTMLInputElement;

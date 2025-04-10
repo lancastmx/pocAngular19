@@ -41,7 +41,7 @@
   <div class="col-4">
     <h3>Input y botones</h3>
     <div>
-      <input  type="text" [value]="name" (change)="changeHandler($event)">
+      <input  type="text" [value]="name()" (change)="changeHandler($event)">
     </div>
     <div>
       <input  type="number" [value]="person.age" (change)="changeHandler($event)">
@@ -98,6 +98,28 @@
     </div>
   </div>
 </div>
+  </div>
+  <div class="col-4">
+    <h6>Listas con signal</h6>
+    <ul>
+      @for (item of signallist();  track item) {
+        <li>{{ item }}</li>
+        } @empty {
+        <li>There are no items.</li>
+        }
+    </ul>
+    <ul>
+      <p>Total {{signallist().length}} </p>
+      @for (item of signallist(); track item; let i = $index) {
+        <li>{{ i }}: {{ item }}</li>
+        } @empty {
+        <li>There are no items.</li>
+        }
+    </ul>
+  </div>
+  <div class="col-4">
+    <h6>Listas con signal</h6>
+   
   </div>
 </div>
 
