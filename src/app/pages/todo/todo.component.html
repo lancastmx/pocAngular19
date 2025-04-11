@@ -19,7 +19,7 @@
         @for (task of tasks(); track task; let i = $index) {
           <li>
             <div class="view">
-              <input class="toggle" type="checkbox" checked />
+              <input class="toggle" type="checkbox" [checked]="task.completed" (change)="updateTask(i)" />
               <label>{{task.title}} </label>
               <button class="destroy" (click)="deleteTask(i)"></button>
             </div>
@@ -74,4 +74,9 @@
       <button class="clear-completed">Clear completed</button>
     </footer>
   </div>
+  <pre>
+    <code>
+      {{tasks() | json }}
+    </code>
+  </pre>
 </section>

@@ -1,10 +1,10 @@
 import { Component, signal } from '@angular/core';
 import { Task } from './model/tasks.model';
-import { title } from 'process';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-todo',
   standalone: true,
-  imports: [],
+  imports: [CommonModule ],
   templateUrl: './todo.component.html',
   styleUrl: './todo.component.scss'
 })
@@ -48,4 +48,19 @@ changerHandler(event: Event){
  deleteTask(index: number){
   this.tasks.update((tasks) => tasks.filter((task, position) => position !== index));
  }
+
+ updateTask(index: number){
+  this.tasks.update((tasks) => {
+    return tasks.map((task, position) => {
+      if (position === index) {
+        return {
+          ...task,
+        completed: !task.completed
+        }
+      }
+      return task;
+    })
+  })
+  }
+
 }
