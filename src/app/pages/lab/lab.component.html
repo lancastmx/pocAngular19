@@ -148,7 +148,13 @@
     <button (click)="cambiarValor()"> sumale</button>
 </div>
 
-
+<div>
+  @if (nvalor() === 5) {
+    <p> Es  5</p>
+  } @else {
+    <p> No es 5</p>
+  }
+</div>
 
 <button type="button" class="btn btn-primary">Primary</button>
 <button type="button" class="btn btn-secondary">Secondary</button>
