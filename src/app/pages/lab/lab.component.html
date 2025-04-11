@@ -62,7 +62,7 @@
   <div class="col-4">
     <h5>Modelo signals</h5>
     <p>Este es el texto de prueba: <span>{{textsignal()}}</span>  </p>
-    
+
     <!-- Agrega esto en tu template -->
 <div >
   <div >
@@ -72,12 +72,12 @@
       - (keydown): Actualiza al presionar tecla pero con valor anterior<br>
       - (change): Actualiza solo al perder foco o presionar Enter
     </p>
-    
+
     <!-- Input con evento input -->
     <div>
       <label>(input) - Tiempo real</label>
-      <input type="text" 
-             [value]="textsignal()" 
+      <input type="text"
+             [value]="textsignal()"
              (input)="updateSignal($event)">
       <p>Valor actual: {{ textsignal() }}</p>
     </div>
@@ -85,15 +85,15 @@
     <!-- Input con evento keydown -->
     <div >
       <label>(keydown) - Valor anterior</label>
-      <input type="text" 
-             [value]="textsignal()" 
+      <input type="text"
+             [value]="textsignal()"
              (keydown)="updateSignal($event)">
       <p>Valor actual: {{ textsignal() }}</p>
     </div>
     <div>
       <label>(keydown) - Valor anterior</label>
-      <input  type="text" 
-              [value]="textsignal()" 
+      <input  type="text"
+              [value]="textsignal()"
               (change)="changeHandler($event)">
     </div>
   </div>
@@ -119,8 +119,33 @@
   </div>
   <div class="col-4">
     <h6>Listas con signal</h6>
-   
+
   </div>
+</div>
+<div class="row">
+  <h2>Ejemplo de {{ejemif}}</h2>
+
+    @if (mostrarMensaje) {
+      <p>Este mensaje se muestra si 'mostrarMensaje' es verdadero.</p>
+    } @else {
+      <p>Este mensaje se muestra si 'mostrarMensaje' es falso.</p>
+    }
+
+    <button (click)="toggleMensaje()">Alternar Mensaje</button>
+
+    <h3>Ejemplo con else if</h3>
+    @if (valor === 1) {
+      <p>El valor es 1.</p>
+    } @else if (valor === 2) {
+      <p>El valor es 2.</p>
+    } @else {
+      <p>El valor no es 1 ni 2.</p>
+    }
+    <p>{{valor}} </p>
+    <button (click)="cambiarValor()">Cambiar Valor</button>
+
+    <p>{{nvalor()}} </p>
+    <button (click)="cambiarValor()"> sumale</button>
 </div>
 
 

@@ -133,4 +133,15 @@ export class LabComponent {
     console.log('(drop): Se soltó un elemento en la zona de soltar.');
     // Puedes procesar los datos transferidos aquí
   }
+  ejemif: string = '@if'
+  mostrarMensaje = false;
+  valor = 0;
+  nvalor = signal<number>(5)
+  toggleMensaje() {
+    this.mostrarMensaje = !this.mostrarMensaje;
+  }
+
+  cambiarValor() {
+    this.valor = (this.valor + 1) % 3; // Cambia entre 0, 1 y 2
+  }
 }
