@@ -53,7 +53,7 @@ export class LabComponent {
   }
   clickHandler(evenet: Event) {
     console.log(evenet)
-    console.log('Se eejecuto (click)="clickHandler()"');
+    console.log('Se ejecuto (click)="clickHandler()"');
   }
   updateSignal(event: Event) {
   const input = event.target as HTMLInputElement;
@@ -64,7 +64,7 @@ export class LabComponent {
   } else {
     this.textsignal.set(input.value);
   }
-  
+
   console.log('Evento:', event.type, 'Valor:', input.value);
 }
   onMouseOverDiv() {
