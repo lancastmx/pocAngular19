@@ -16,11 +16,11 @@
     <!-- This section should be hidden by default and shown when there are todos -->
     <section class="main">
       <ul class="todo-list">
-        @for (item of tasks(); track item; let i = $index) {
+        @for (task of tasks(); track task; let i = $index) {
           <li>
             <div class="view">
               <input class="toggle" type="checkbox" checked />
-              <label>{{item}} </label>
+              <label>{{task.title}} </label>
               <button class="destroy" (click)="deleteTask(i)"></button>
             </div>
             <input class="edit" value="Learn JavaScript" />
@@ -35,7 +35,7 @@
             <button class="destroy"></button>
           </div>
           <input class="edit" value="Learn JavaScript" />
-        </li> 
+        </li>
         <li>
           <div class="view">
             <input class="toggle" type="checkbox" />
