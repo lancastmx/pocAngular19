@@ -37,7 +37,10 @@ export class LabComponent {
     'señal3',
     'señal4'
   ])
-
+  ejemif: string = '@if'
+  mostrarMensaje = false;
+  valor = 0;
+  nvalor = signal<number>(5)
   keydonwHandler(event: KeyboardEvent){
     const input = event.target as HTMLInputElement;
     const newValue = input.value;
@@ -66,7 +69,19 @@ export class LabComponent {
   }
 
   console.log('Evento:', event.type, 'Valor:', input.value);
-}
+  }
+  sumale(event: Event){
+    const input = event.target as HTMLInputElement;
+    const newValue = input.value;
+    console.log(newValue);
+    const newNumberValue = Number(newValue);
+
+    if (!isNaN(newNumberValue)) {
+      this.nvalor.set(newNumberValue);
+    } else {
+      console.error('El valor ingresado no es un número válido.');
+    }
+  }
   onMouseOverDiv() {
     console.log('(mouseover): El cursor del ratón entró en el elemento div.');
   }
@@ -133,10 +148,7 @@ export class LabComponent {
     console.log('(drop): Se soltó un elemento en la zona de soltar.');
     // Puedes procesar los datos transferidos aquí
   }
-  ejemif: string = '@if'
-  mostrarMensaje = false;
-  valor = 0;
-  nvalor = signal<number>(5)
+
   toggleMensaje() {
     this.mostrarMensaje = !this.mostrarMensaje;
   }

@@ -144,17 +144,21 @@
     <p>{{valor}} </p>
     <button (click)="cambiarValor()">Cambiar Valor</button>
 
-    <p>{{nvalor()}} </p>
-    <button (click)="cambiarValor()"> sumale</button>
+
+    <div>
+      <input  type="number" [value]="nvalor()" (change)="sumale($event)">
+    </div>
+    <div>
+      @if (nvalor() === 7) {
+        <p> Es  7</p>
+      } @else {
+        <p> No es 7 es {{nvalor()}} </p>
+      }
+    </div>
+
 </div>
 
-<div>
-  @if (nvalor() === 5) {
-    <p> Es  5</p>
-  } @else {
-    <p> No es 5</p>
-  }
-</div>
+
 
 <button type="button" class="btn btn-primary">Primary</button>
 <button type="button" class="btn btn-secondary">Secondary</button>
