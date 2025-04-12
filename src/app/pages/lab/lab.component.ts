@@ -1,10 +1,12 @@
 import { Component, signal } from '@angular/core';
 import { TodoComponent } from '../todo/todo.component';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 @Component({
   selector: 'app-lab',
   standalone:true,
   imports: [
-    TodoComponent
+    TodoComponent,
+    ReactiveFormsModule
   ],
   templateUrl: './lab.component.html',
   styleUrl: './lab.component.scss'
@@ -41,6 +43,13 @@ export class LabComponent {
   mostrarMensaje = false;
   valor = 0;
   nvalor = signal<number>(5)
+
+  colorCtrl = new FormControl();
+  constructor(){
+    this.colorCtrl.valueChanges.subscribe(value =>{
+      console.log(value)
+    })
+  }
   keydonwHandler(event: KeyboardEvent){
     const input = event.target as HTMLInputElement;
     const newValue = input.value;
@@ -92,6 +101,7 @@ export class LabComponent {
       }
     });
   }
+
   onMouseOverDiv() {
     console.log('(mouseover): El cursor del ratón entró en el elemento div.');
   }
