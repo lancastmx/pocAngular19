@@ -29,13 +29,13 @@
     </div>
     <div class="col-4 m-4">
       <img
-      [src]="person.avatar"
-      [alt]="person.name"
+      [src]="person().avatar"
+      [alt]="person().name"
       class="card__img">
     </div>
     <div class="col-4">
-      <h1 class="card__text">{{person.name}} </h1>
-      <p class="card__text" >{{person.age}} </p>
+      <h1 class="card__text">{{person().name}} </h1>
+      <p class="card__text" >{{person().age}} </p>
     </div>
   </div>
   <div class="col-4">
@@ -44,7 +44,7 @@
       <input  type="text" [value]="name()" (change)="changeHandler($event)">
     </div>
     <div>
-      <input  type="number" [value]="person.age" (change)="changeHandler($event)">
+      <input  type="number" [value]="person().age" (change)="changeHandler($event)">
     </div>
     <div>
       <button class="btn btn-primary" (click)="clickHandler($event)">click me</button>
@@ -54,7 +54,7 @@
     </div>
     <div>
       <p>(Keydown) </p>
-       <input type="text" [value]="person.name" (keydown)="keydonwHandler($event)">
+       <input type="text" [value]="person().name" (keydown)="keydonwHandler($event)">
     </div>
   </div>
 </div>
@@ -155,7 +155,10 @@
         <p> No es 7 es {{nvalor()}} </p>
       }
     </div>
-
+    <div>
+      <p>Cambia la edad</p>
+      <input  type="number" [value]="person().age" (change)="changeAge($event)">
+    </div>
 </div>
 
 

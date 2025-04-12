@@ -22,11 +22,11 @@ export class LabComponent {
     'melon'
   ]
   img = 'https://picsum.photos/200/300'
-  person = {
+  person = signal({
     name: 'Angel',
     age: 32,
     avatar:'https://picsum.photos/200/300'
-  }
+  })
   text1 = 'More Event Binding Examples';
   textsignal= signal('texto señal')
 
@@ -81,6 +81,16 @@ export class LabComponent {
     } else {
       console.error('El valor ingresado no es un número válido.');
     }
+  }
+  changeAge(event: Event){
+    const input = event.target as HTMLInputElement;
+    const newValue = input.value;
+    this.person.update(prevState => {
+      return {
+        ...prevState,
+        age: parseInt(newValue, 10)
+      }
+    });
   }
   onMouseOverDiv() {
     console.log('(mouseover): El cursor del ratón entró en el elemento div.');
