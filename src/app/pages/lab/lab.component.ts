@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { TodoComponent } from '../todo/todo.component';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 @Component({
   selector: 'app-lab',
   standalone:true,
@@ -45,10 +45,17 @@ export class LabComponent {
   nvalor = signal<number>(5)
 
   colorCtrl = new FormControl();
-  widthCtrl = new FormControl(50, {
+  widthCtrl = new FormControl('50', {
     nonNullable: true,
   });
 
+  nameCtrl = new FormControl( 'Angel',{
+    nonNullable: true,
+    validators: [
+      Validators.required,
+      Validators.minLength(3)
+    ]
+  })
 
   constructor(){
     this.colorCtrl.valueChanges.subscribe(value =>{

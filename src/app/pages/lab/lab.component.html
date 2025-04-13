@@ -199,9 +199,8 @@
 <hr>
 <div>
   <h2>Clase 19 de 71: Clases en Angular </h2>
-  <input type="text"> <br>
-  <span></span>
-
+  <input type="text" [formControl]="nameCtrl"> <br>
+  <span class="message-error"[class.show]="nameCtrl.invalid && nameCtrl.touched" >Nombre invalido</span>
 </div>
 
 
