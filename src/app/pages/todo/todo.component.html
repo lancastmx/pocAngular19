@@ -9,7 +9,7 @@
         autofocus
         type="text"
        [formControl]="newTaskCtrl"
-       (keydown)="changerHandler()"
+       (keyup.enter)="changerHandler()"
       />
     </div>
   </header>
@@ -18,13 +18,16 @@
     <section class="main">
       <ul class="todo-list">
         @for (task of tasks(); track task; let i = $index) {
-          <li>
+          <li
+          (dblclick)="updateTaskEditMode(i)"
+          [class.editing]="task.editing"
+          [class.completed]="task.completed">
             <div class="view">
               <input class="toggle" type="checkbox" [checked]="task.completed" (change)="updateTask(i)" />
               <label>{{task.title}} </label>
               <button class="destroy" (click)="deleteTask(i)"></button>
             </div>
-            <input class="edit" value="Learn JavaScript" />
+            <input class="edit" [value]="task.title" (keyup.enter)="updateTaskText(i, $event)" />
           </li>
           } @empty {
           <li>There are no items.</li>

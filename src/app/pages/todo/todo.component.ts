@@ -12,23 +12,19 @@ import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
   styleUrl: './todo.component.scss'
 })
 export class TodoComponent {
-//  tasks = signal([
-//   'Leer',
-//   'Hacer Poc de cursos',
-//   'Hacer ejercicio',
-//   'Preparar presentación'
-//  ])
 
  tasks = signal<Task[]> ([
   {
-  id: Date.now(),
-  title: 'Tarea 1 standar',
-  completed: false,
+    id: Date.now(),
+    title: 'Tarea 1 standar',
+    completed: false,
+    editing: false,
   },
   {
     id: Date.now(),
     title: 'Tarea 2 standar',
     completed: false,
+    editing: false,
   }
 ])
 newTaskCtrl = new FormControl('', {
@@ -76,6 +72,37 @@ changerHandler(){
       return task;
     })
   })
-  }
+ }
 
+ updateTaskEditMode(index: Number){
+  this.tasks.update((tasks) => {
+    return tasks.map((task, position) => {
+      if (position === index) {
+        return {
+          ...task,
+        editing: true,
+        }
+      }
+      return {
+        ...task,
+        editing: false
+      }
+    })
+  })
+ }
+ updateTaskText(index: Number, event: Event){
+  const input = event.target as HTMLInputElement;
+  this.tasks.update((tasks) => {
+    return tasks.map((task, position) => {
+      if (position === index) {
+        return {
+          ...task,
+        title: input.value,
+        editing: false,
+        }
+      }
+      return task
+    })
+  })
+ }
 }
