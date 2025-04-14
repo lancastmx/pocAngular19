@@ -17,7 +17,7 @@
     <!-- This section should be hidden by default and shown when there are todos -->
     <section class="main">
       <ul class="todo-list">
-        @for (task of tasks(); track task; let i = $index) {
+        @for (task of taskByFilter(); track task; let i = $index) {
           <li
           (dblclick)="updateTaskEditMode(i)"
           [class.editing]="task.editing"
@@ -61,17 +61,17 @@
     <!-- This footer should be hidden by default and shown when there are todos -->
     <footer class="footer">
       <!-- This should be `0 items left` by default -->
-      <span class="todo-count"><strong>{{tasks().length}} @if( tasks().length > 1) {<span>items</span> } @else {<span>item</span> } </strong></span>
+      <span class="todo-count"><strong>{{taskByFilter().length}} @if( taskByFilter().length > 1) {<span>items</span> } @else {<span>item</span> } </strong></span>
       <!-- Remove this if you don't implement routing -->
       <ul class="filters">
         <li>
-          <a routerLink="/" class="selected">All</a>
+          <a (click)="changeFilter('all')" [class.selected]="filter() === 'all'">All</a>
         </li>
         <li>
-          <a routerLink="/pending">Pending</a>
+          <a (click)="changeFilter('pending')" [class.selected]="filter() === 'pending'">Pending</a>
         </li>
         <li>
-          <a routerLink="/completed">Completed</a>
+          <a (click)="changeFilter('completed')"  [class.selected]="filter() === 'completed'">Completed</a>
         </li>
       </ul>
       <!-- Hidden if no completed items are left ↓ -->
