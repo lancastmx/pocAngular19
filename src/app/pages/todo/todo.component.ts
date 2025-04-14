@@ -1,6 +1,6 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed,effect , inject, Injector, signal } from '@angular/core';
 import { Task } from './model/tasks.model';
-import { CommonModule } from '@angular/common';
+import { CommonModule} from '@angular/common';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 @Component({
   selector: 'app-todo',
@@ -13,22 +13,11 @@ import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 })
 export class TodoComponent {
 
- tasks = signal<Task[]> ([
-  {
-    id: Date.now(),
-    title: 'Tarea 1 standar',
-    completed: false,
-    editing: false,
-  },
-  {
-    id: Date.now(),
-    title: 'Tarea 2 standar',
-    completed: false,
-    editing: false,
-  }
-])
+ tasks = signal<Task[]> ([])
 
 filter = signal('all');
+injector = inject(Injector)
+
 taskByFilter = computed(() =>{
   const filter = this.filter();
   const tasks = this.tasks();
@@ -49,6 +38,22 @@ newTaskCtrl = new FormControl('', {
   ]
 });
 
+
+ngOnInit(){
+  const storage = localStorage.getItem('tasks');
+  if (storage) {
+    const tasks = JSON.parse(storage);
+    this.tasks.set(tasks)
+  }
+  this.trackTasks();
+}
+trackTasks(){
+  effect(()=> {
+    const tasks = this.tasks();
+    console.log('Corriendo effect')
+    localStorage.setItem('tasks', JSON.stringify(tasks))
+  }, {injector: this.injector});
+}
 changerHandler(){
  if (this.newTaskCtrl.valid){
   const value = this.newTaskCtrl.value.trim();

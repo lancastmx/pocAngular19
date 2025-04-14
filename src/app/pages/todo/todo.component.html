@@ -30,35 +30,12 @@
             <input class="edit" [value]="task.title" (keyup.enter)="updateTaskText(i, $event)" />
           </li>
           } @empty {
-          <li>There are no items.</li>
+          <li>Agrega tu primera task</li>
           }
-       <!-- <li class="completed">
-          <div class="view">
-            <input class="toggle" type="checkbox" checked />
-            <label>Learn JavaScript</label>
-            <button class="destroy"></button>
-          </div>
-          <input class="edit" value="Learn JavaScript" />
-        </li>
-        <li>
-          <div class="view">
-            <input class="toggle" type="checkbox" />
-            <label>Buy a unicorn</label>
-            <button class="destroy"></button>
-          </div>
-          <input class="edit" value="Buy a unicorn" />
-        </li>
-        <li class="editing">
-          <div class="view">
-            <input class="toggle" type="checkbox" />
-            <label>Make dishes</label>
-            <button class="destroy"></button>
-          </div>
-          <input class="edit" value="Make dishes" />
-        </li> -->
       </ul>
     </section>
     <!-- This footer should be hidden by default and shown when there are todos -->
+    @if( tasks().length >= 1) {
     <footer class="footer">
       <!-- This should be `0 items left` by default -->
       <span class="todo-count"><strong>{{taskByFilter().length}} @if( taskByFilter().length > 1) {<span>items</span> } @else {<span>item</span> } </strong></span>
@@ -76,7 +53,7 @@
       </ul>
       <!-- Hidden if no completed items are left ↓ -->
       <button class="clear-completed">Clear completed</button>
-    </footer>
+    </footer>}
   </div>
 
   <!-- <pre>
